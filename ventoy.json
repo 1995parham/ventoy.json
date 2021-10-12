@@ -1,0 +1,51 @@
+{
+  "control": [{ "VTOY_DEFAULT_MENU_MODE": "0" }],
+
+  "theme": {
+    "file": "/ventoy/theme/sleek/theme.txt",
+    "display_mode": "GUI",
+    "gfxmode": "1920x1080",
+    "fonts": [
+      "/ventoy/theme/sleek/Poppins-14.pf2",
+      "/ventoy/theme/sleek/Poppins-16.pf2",
+      "/ventoy/theme/sleek/Poppins-18.pf2",
+      "/ventoy/theme/sleek/Poppins-48.pf2",
+      "/ventoy/theme/sleek/terminus-14.pf2"
+    ]
+  },
+
+  "menu_class": [
+    {
+      "parent": "/iso/linux/arch",
+      "class": "arch"
+    },
+    {
+      "parent": "/iso/linux/sysrescd",
+      "class": "systemrescuecd"
+    },
+    {
+      "parent": "/iso/linux/ubuntu",
+      "class": "ubuntu"
+    },
+    {
+      "parent": "/iso/linux",
+      "class": "linux"
+    },
+    {
+      "parent": "/iso/windows",
+      "class": "windows"
+    }
+  ],
+
+  "menu_tip": {
+    "left": "10%",
+    "top": "81%",
+    "color": "orange",
+    "tips": [
+      {
+        "image": "/iso/windows/Win11-RTM.iso",
+        "tip": "use ctrl+w to wimboot plugin"
+      }
+    ]
+  }
+}
