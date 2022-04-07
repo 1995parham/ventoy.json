@@ -47,7 +47,7 @@
     "color": "orange",
     "tips": [
       {
-        "image": "/iso/windows/Win11-RTM.iso",
+        "image": "/iso/windows/Win11-Feb-2022.iso",
         "tip": "use ctrl+w to wimboot plugin"
       }
     ]
