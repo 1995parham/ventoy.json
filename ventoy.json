@@ -20,6 +20,10 @@
       "class": "arch"
     },
     {
+      "parent": "/iso/linux/garuda",
+      "class": "garuda"
+    },
+    {
       "parent": "/iso/linux/sysrescd",
       "class": "systemrescuecd"
     },
