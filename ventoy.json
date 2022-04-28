@@ -40,6 +40,10 @@
       "class": "gentoo"
     },
     {
+      "parent": "/iso/linux/nixos",
+      "class": "nixos"
+    },
+    {
       "parent": "/iso/windows",
       "class": "windows"
     }
