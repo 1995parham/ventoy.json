@@ -36,6 +36,10 @@
       "class": "linux"
     },
     {
+      "parent": "/iso/linux/gentoo",
+      "class": "gentoo"
+    },
+    {
       "parent": "/iso/windows",
       "class": "windows"
     }
