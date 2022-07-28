@@ -18,7 +18,7 @@
     },
     {
       "parent": "/iso/linux/garuda",
-      "class": "linux"
+      "class": "garuda"
     },
     {
       "parent": "/iso/linux/sysrescd",
