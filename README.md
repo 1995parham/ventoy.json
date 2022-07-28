@@ -25,7 +25,7 @@ ventoy/
 - Windows
 - [Ubuntu](https://ubuntu.com/)
 - [System Rescue](https://www.system-rescue.org/)
-- [Garuda Linux](https://garudalinux.org/index.html)]
+- [Garuda Linux](https://garudalinux.org/index.html)
 - [Nixos](https://nixos.org/)
 - [Gentoo](https://www.gentoo.org/)
 
