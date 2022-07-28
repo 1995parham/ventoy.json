@@ -28,3 +28,14 @@ ventoy/
 - [Garuda Linux](https://garudalinux.org/index.html)]
 - [Nixos](https://nixos.org/)
 - [Gentoo](https://www.gentoo.org/)
+
+## Theme
+
+- [Dark Matter GRUB Theme](https://github.com/VandalByte/darkmatter-grub2-theme)
+
+```sh
+mv darkmatter-grub2-theme/dark-matter /mnt/ventoy/theme/
+mv darkmatter-grub2-theme/assests/progressbar/linux_pb.png /mnt/ventoy/theme/dark-matter/progress_highlight_c.png
+mv darkmatter-grub2-theme/assests/backgrounds/linux.png /mnt/ventoy/theme/dark-matter/background.png
+mv darkmatter-grub2-theme/assests/icons/color /mnt/ventoy/theme/dark-matter/icons
+```

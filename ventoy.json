@@ -2,30 +2,27 @@
   "control": [{ "VTOY_DEFAULT_MENU_MODE": "0" }],
 
   "theme": {
-    "file": "/ventoy/theme/sleek/theme.txt",
+    "file": "/ventoy/theme/dark-matter/theme.txt",
     "display_mode": "GUI",
     "gfxmode": "1920x1080",
     "fonts": [
-      "/ventoy/theme/sleek/Poppins-14.pf2",
-      "/ventoy/theme/sleek/Poppins-16.pf2",
-      "/ventoy/theme/sleek/Poppins-18.pf2",
-      "/ventoy/theme/sleek/Poppins-48.pf2",
-      "/ventoy/theme/sleek/terminus-14.pf2"
+      "ventoy/theme/dark-matter/JetBrainsMono_Bold_15.pf2",
+      "ventoy/theme/dark-matter/JetBrainsMono_Bold_17.pf2"
     ]
   },
 
   "menu_class": [
     {
       "parent": "/iso/linux/arch",
-      "class": "arch"
+      "class": "archlinux"
     },
     {
       "parent": "/iso/linux/garuda",
-      "class": "garuda"
+      "class": "linux"
     },
     {
       "parent": "/iso/linux/sysrescd",
-      "class": "systemrescuecd"
+      "class": "SystemRescueCD"
     },
     {
       "parent": "/iso/linux/ubuntu",
