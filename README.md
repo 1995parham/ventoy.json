@@ -5,18 +5,16 @@
 [ventoy](https://www.ventoy.net/en/index.html) is A New Bootable USB Solution and here is my configuration on it to have theme and also support my images.
 
 ```
-iso/
-  |
-  - iso/
-    |
-    - linux/
-    - windows/
-ventoy/
-  |
-  - .git/
-  - ventoy.json
-  - README.md
-  - theme/
+├─ 📂 iso
+|  ├─ 📂 linux
+|  └─ 📂 windows
+|
+|
+└ 📂 ventoy/
+  ├─ .git/
+  ├─ {} ventoy.json
+  ├─ 🖹 README.md
+  └─ 📂 theme/
 ```
 
 ## Images
