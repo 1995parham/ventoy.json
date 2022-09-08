@@ -1,6 +1,9 @@
 {
-  "control": [{ "VTOY_DEFAULT_MENU_MODE": "0" }],
-
+  "control": [
+    {
+      "VTOY_DEFAULT_MENU_MODE": "0"
+    }
+  ],
   "theme": {
     "file": "/ventoy/theme/dark-matter/theme.txt",
     "display_mode": "GUI",
@@ -10,7 +13,6 @@
       "ventoy/theme/dark-matter/JetBrainsMono_Bold_17.pf2"
     ]
   },
-
   "menu_class": [
     {
       "parent": "/iso/linux/arch",
@@ -37,6 +39,10 @@
       "class": "gentoo"
     },
     {
+      "parent": "/iso/linux/fedora",
+      "class": "fedora"
+    },
+    {
       "parent": "/iso/linux/nixos",
       "class": "nixos"
     },
@@ -45,7 +51,6 @@
       "class": "windows"
     }
   ],
-
   "menu_tip": {
     "left": "10%",
     "top": "81%",
