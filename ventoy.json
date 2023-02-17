@@ -39,6 +39,10 @@
       "class": "gentoo"
     },
     {
+      "parent": "/iso/linux/tails",
+      "class": "tails"
+    },
+    {
       "parent": "/iso/linux/fedora",
       "class": "fedora"
     },
