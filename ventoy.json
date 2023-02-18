@@ -65,5 +65,11 @@
         "tip": "use ctrl+w to wimboot plugin"
       }
     ]
-  }
+  },
+  "persistence": [
+    {
+      "image": "/iso/linux/archlinux/MX-19.1_x64.iso",
+      "backend": "/persistence/archlinux-01.dat"
+    }
+  ]
 }
