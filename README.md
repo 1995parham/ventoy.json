@@ -26,6 +26,7 @@
 - [Garuda Linux](https://garudalinux.org/index.html)
 - [Nixos](https://nixos.org/)
 - [Gentoo](https://www.gentoo.org/)
+- [Tails](https://tails.boum.org/index.en.html)
 
 ## Theme
 
