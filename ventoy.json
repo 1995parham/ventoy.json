@@ -47,6 +47,10 @@
       "class": "fedora"
     },
     {
+      "parent": "/iso/linux/vmware",
+      "class": "vmware"
+    },
+    {
       "parent": "/iso/linux/nixos",
       "class": "nixos"
     },
