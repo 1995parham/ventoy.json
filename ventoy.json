@@ -55,6 +55,10 @@
       "class": "nixos"
     },
     {
+      "parent": "/iso/linux/endeavouros",
+      "class": "endeavouros"
+    },
+    {
       "parent": "/iso/windows",
       "class": "windows"
     }
