@@ -59,6 +59,10 @@
       "class": "endeavouros"
     },
     {
+      "parent": "/iso/linux/manjaro",
+      "class": "manjaro"
+    },
+    {
       "parent": "/iso/windows",
       "class": "windows"
     }
