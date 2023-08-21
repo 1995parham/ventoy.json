@@ -66,22 +66,5 @@
       "parent": "/iso/windows",
       "class": "windows"
     }
-  ],
-  "menu_tip": {
-    "left": "10%",
-    "top": "81%",
-    "color": "orange",
-    "tips": [
-      {
-        "image": "/iso/windows/Win11-Jul-2022.iso",
-        "tip": "use ctrl+w to wimboot plugin"
-      }
-    ]
-  },
-  "persistence": [
-    {
-      "image": "/iso/linux/arch/archlinux-2023.02.01-x86_64.iso",
-      "backend": "/persistence/archlinux-01.dat"
-    }
   ]
 }
