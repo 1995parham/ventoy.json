@@ -51,6 +51,10 @@
       "class": "vmware"
     },
     {
+      "parent": "/iso/linux/bodhilinux",
+      "class": "bodhilinux"
+    },
+    {
       "parent": "/iso/linux/nixos",
       "class": "nixos"
     },
