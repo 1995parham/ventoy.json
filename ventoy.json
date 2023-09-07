@@ -55,6 +55,10 @@
       "class": "bodhilinux"
     },
     {
+      "parent": "/iso/linux/mint",
+      "class": "linuxmint"
+    },
+    {
       "parent": "/iso/linux/nixos",
       "class": "nixos"
     },
