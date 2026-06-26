@@ -24,13 +24,21 @@ and distributions images.
 ## Images
 
 - [Arch](https://archlinux.org/)
-- Windows
-- [Ubuntu](https://ubuntu.com/)
-- [System Rescue](https://www.system-rescue.org/)
+- [Bodhi Linux](https://www.bodhilinux.com/)
+- [CachyOS](https://cachyos.org/)
+- [EndeavourOS](https://endeavouros.com/)
+- [Fedora](https://fedoraproject.org/)
 - [Garuda Linux](https://garudalinux.org/index.html)
-- [NixOS](https://nixos.org/)
 - [Gentoo](https://www.gentoo.org/)
+- [Manjaro](https://manjaro.org/)
+- [Linux Mint](https://linuxmint.com/)
+- [NixOS](https://nixos.org/)
+- [System Rescue](https://www.system-rescue.org/)
 - [Tails](https://tails.boum.org/index.en.html)
+- [Ubuntu](https://ubuntu.com/)
+- [VMware ESXi](https://www.vmware.com/products/esxi-and-esx.html)
+- [Void Linux](https://voidlinux.org/)
+- Windows
 
 ## Theme
 
