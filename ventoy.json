@@ -19,40 +19,32 @@
       "class": "archlinux"
     },
     {
-      "parent": "/iso/linux/garuda",
-      "class": "garuda"
+      "parent": "/iso/linux/bodhilinux",
+      "class": "bodhilinux"
     },
     {
-      "parent": "/iso/linux/sysrescd",
-      "class": "SystemRescueCD"
+      "parent": "/iso/linux/cachyos",
+      "class": "cachyos"
     },
     {
-      "parent": "/iso/linux/ubuntu",
-      "class": "ubuntu"
-    },
-    {
-      "parent": "/iso/linux",
-      "class": "linux"
-    },
-    {
-      "parent": "/iso/linux/gentoo",
-      "class": "gentoo"
-    },
-    {
-      "parent": "/iso/linux/tails",
-      "class": "tails"
+      "parent": "/iso/linux/endeavouros",
+      "class": "endeavouros"
     },
     {
       "parent": "/iso/linux/fedora",
       "class": "fedora"
     },
     {
-      "parent": "/iso/linux/vmware",
-      "class": "vmware"
+      "parent": "/iso/linux/garuda",
+      "class": "garuda"
     },
     {
-      "parent": "/iso/linux/bodhilinux",
-      "class": "bodhilinux"
+      "parent": "/iso/linux/gentoo",
+      "class": "gentoo"
+    },
+    {
+      "parent": "/iso/linux/manjaro",
+      "class": "manjaro"
     },
     {
       "parent": "/iso/linux/mint",
@@ -63,16 +55,28 @@
       "class": "nixos"
     },
     {
+      "parent": "/iso/linux/sysrescd",
+      "class": "SystemRescueCD"
+    },
+    {
+      "parent": "/iso/linux/tails",
+      "class": "tails"
+    },
+    {
+      "parent": "/iso/linux/ubuntu",
+      "class": "ubuntu"
+    },
+    {
+      "parent": "/iso/linux/vmware",
+      "class": "vmware"
+    },
+    {
       "parent": "/iso/linux/void",
       "class": "void"
     },
     {
-      "parent": "/iso/linux/endeavouros",
-      "class": "endeavouros"
-    },
-    {
-      "parent": "/iso/linux/manjaro",
-      "class": "manjaro"
+      "parent": "/iso/linux",
+      "class": "linux"
     },
     {
       "parent": "/iso/windows",
