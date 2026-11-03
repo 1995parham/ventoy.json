@@ -2,6 +2,12 @@
   "control": [
     {
       "VTOY_DEFAULT_MENU_MODE": "0"
+    },
+    {
+      "VTOY_MENU_TIMEOUT": "10"
+    },
+    {
+      "VTOY_DEFAULT_IMAGE": "/iso/linux/arch/archlinux-2026.11.01-x86_64.iso"
     }
   ],
   "theme": {
