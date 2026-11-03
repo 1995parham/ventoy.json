@@ -11,12 +11,14 @@
     }
   ],
   "theme": {
-    "file": "/ventoy/theme/dark-matter/theme.txt",
+    "file": "/ventoy/theme/nova/theme.txt",
     "display_mode": "GUI",
     "gfxmode": "1920x1080",
     "fonts": [
-      "ventoy/theme/dark-matter/JetBrainsMono_Bold_15.pf2",
-      "ventoy/theme/dark-matter/JetBrainsMono_Bold_17.pf2"
+      "/ventoy/theme/nova/JetBrainsMono_Regular_16.pf2",
+      "/ventoy/theme/nova/JetBrainsMono_Regular_18.pf2",
+      "/ventoy/theme/nova/JetBrainsMono_Regular_22.pf2",
+      "/ventoy/theme/nova/JetBrainsMono_Bold_22.pf2"
     ]
   },
   "menu_class": [

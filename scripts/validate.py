@@ -18,8 +18,7 @@ import struct
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-THEME_DIR = os.path.join(ROOT, "theme", "dark-matter")
-ICON_DIR = os.path.join(THEME_DIR, "icons")
+THEME_DIR = ICON_DIR = None  # set in main() from ventoy.json theme.file
 
 errors = []
 warnings = []
@@ -73,6 +72,11 @@ def main():
         print(f"FATAL: cannot parse ventoy.json: {exc}")
         return 1
 
+    global THEME_DIR, ICON_DIR
+    theme_file = cfg.get("theme", {}).get("file", "/ventoy/theme/nova/theme.txt")
+    THEME_DIR = os.path.dirname(repo_rel(theme_file))
+    ICON_DIR = os.path.join(THEME_DIR, "icons")
+
     icon_w, icon_h = theme_icon_size()
     entries = cfg.get("menu_class", [])
 
@@ -84,7 +88,7 @@ def main():
             continue
         icon = os.path.join(ICON_DIR, f"{cls}.png")
         if not os.path.isfile(icon):
-            errors.append(f"class '{cls}' has no icon at theme/dark-matter/icons/{cls}.png")
+            errors.append(f"class '{cls}' has no icon at {os.path.relpath(ICON_DIR, ROOT)}/{cls}.png")
             continue
         size = png_size(icon)
         if size is None:

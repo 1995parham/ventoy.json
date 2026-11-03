@@ -1,0 +1,88 @@
+# Nova — Ventoy/GRUB theme
+#
+# Minimal centered card on a dark background with a soft violet/cyan glow.
+# Generated assets come from scripts/build_theme.py; edit the script, not the PNGs.
+# Layout assumes gfxmode 1920x1080 but uses percentages so it degrades gracefully.
+
+desktop-image: "background.png"
+desktop-color: "#0a0c12"
+title-text: ""
+message-font: "JetBrains Mono Regular 18"
+message-color: "#e8ecf4"
+
+terminal-font: "JetBrains Mono Regular 18"
+terminal-box: "terminal_box_*.png"
+terminal-left: "10%"
+terminal-top: "10%"
+terminal-width: "80%"
+terminal-height: "80%"
+terminal-border: "0"
+
+# Image list, drawn inside a translucent rounded card (card_*.png = 24px padding)
++ boot_menu {
+    left = 30%
+    top = 27%
+    width = 40%
+    height = 44%
+    menu_pixmap_style = "card_*.png"
+
+    item_font = "JetBrains Mono Regular 22"
+    selected_item_font = "JetBrains Mono Bold 22"
+    item_color = "#8a92a6"
+    selected_item_color = "#ffffff"
+    selected_item_pixmap_style = "select_*.png"
+
+    icon_width = 32
+    icon_height = 32
+    item_icon_space = 14
+    item_height = 48
+    item_padding = 0
+    item_spacing = 8
+
+    scrollbar = true
+    scrollbar_width = 6
+    scrollbar_thumb = "slider_*.png"
+}
+
+# Auto-boot countdown (VTOY_MENU_TIMEOUT): slim bar + right-aligned text below it
++ progress_bar {
+    id = "__timeout__"
+    left = 30%
+    top = 75%
+    width = 40%
+    height = 6
+    show_text = false
+    bar_style = "progress_bar_*.png"
+    highlight_style = "progress_highlight_*.png"
+}
+
++ label {
+    id = "__timeout__"
+    left = 30%
+    top = 75%+16
+    width = 40%
+    height = 20
+    align = "right"
+    font = "JetBrains Mono Regular 16"
+    color = "#6e768a"
+    text = "booting in %d s"
+}
+
+# Ventoy's live hotkey hints (F1 help, F2 browse, ...)
++ label {
+    left = 0
+    top = 93%
+    width = 100%
+    height = 20
+    align = "center"
+    font = "JetBrains Mono Regular 16"
+    color = "#6e768a"
+    text = "@VTOY_HOTKEY_TIP@"
+}
+
+# Ventoy mode indicators (empty unless a mode is switched on), top-right corner
++ label { left = 75% top = 40 width = 23% height = 20 align = "right" font = "JetBrains Mono Regular 16" color = "#22d3ee" text = "@VTOY_MEM_DISK@" }
++ label { left = 75% top = 62 width = 23% height = 20 align = "right" font = "JetBrains Mono Regular 16" color = "#22d3ee" text = "@VTOY_ISO_RAW@" }
++ label { left = 75% top = 84 width = 23% height = 20 align = "right" font = "JetBrains Mono Regular 16" color = "#22d3ee" text = "@VTOY_GRUB2_MODE@" }
++ label { left = 75% top = 106 width = 23% height = 20 align = "right" font = "JetBrains Mono Regular 16" color = "#22d3ee" text = "@VTOY_WIMBOOT_MODE@" }
++ label { left = 75% top = 128 width = 23% height = 20 align = "right" font = "JetBrains Mono Regular 16" color = "#22d3ee" text = "@VTOY_ISO_UEFI_DRV@" }
