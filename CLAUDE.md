@@ -30,7 +30,7 @@ Installed Ventoy version: **1.1.18** (upgraded from 1.0.99 on 2026-11-04). The v
 
 `Ventoy2Disk.sh` runs on Linux (and Windows), not macOS, so upgrade from a Linux host, e.g. `nobinobi` (`192.168.78.3`), or from the Arch ISO on the stick itself. Verify the tarball against the release's `sha256.txt`, back up the first 1 MiB of the disk and the `VTOYEFI` partition, dump the table with `sfdisk -d`, then run `sudo sh Ventoy2Disk.sh -u /dev/sdX` from inside the extracted folder. `-u` rewrites only the boot code and `VTOYEFI`; the partition table, the ISOs, `PARHAM-KEYS` and `CIDATA` stay unchanged (verified on the 1.0.99 → 1.1.18 upgrade by diffing `sfdisk -d` before and after). The script asks for confirmation twice. Piping the password and the answers together into `sudo -S` does not work (the script exits without upgrading); use `sudo sh -c 'yes y | sh Ventoy2Disk.sh -u /dev/sdX'` instead. Confirm the new `VENTOY_VERSION` afterwards.
 
-`nobinobi` has no GitHub key: to commit from there, use `ssh -A` from the Mac so the push uses the forwarded agent.
+`nobinobi` has no GitHub key, and its sshd sets `AllowAgentForwarding no`, so `ssh -A` does not help. Commit on the stick there, then push from the Mac: `git fetch parham@192.168.78.3:/mnt/ventoy/ventoy main` into a clone and `git push origin FETCH_HEAD:main`.
 
 ## ISO folder layout
 
