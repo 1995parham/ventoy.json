@@ -67,9 +67,14 @@ SystemRescue breaks under Ventoy's normal mode every few releases (Ventoy issues
 The stick can boot a machine that has no display and make it reachable over SSH:
 
 1. `ventoy.json` → `control` sets `VTOY_MENU_TIMEOUT` = `10` and `VTOY_DEFAULT_IMAGE` = the Arch ISO, so Ventoy boots Arch by itself after 10 seconds.
-2. The Arch ISO starts `sshd` and runs cloud-init, which finds the `CIDATA` partition (NoCloud datasource) and reads `user-data` + `meta-data` from it.
-3. `user-data` installs the SSH public keys from `https://github.com/1995parham.keys` as root's `authorized_keys`. Regenerate it when those keys change.
-4. Connect ethernet, power on, find the IP in the router's DHCP lease list, `ssh root@<ip>`.
+2. `VTOY_SECONDARY_TIMEOUT` = `5` makes Ventoy's secondary menu (normal / grub2 / memdisk mode) continue by itself; without it a headless boot waits there forever. Confirmed in Ventoy's source (`ventoy_cmd.c` sets `timeout` from it).
+3. The Arch ISO starts `sshd` and runs cloud-init, which finds the `CIDATA` partition (NoCloud datasource) and reads `user-data` + `meta-data` from it.
+4. `user-data` installs the SSH public keys from `https://github.com/1995parham.keys` as root's `authorized_keys`. Regenerate it when those keys change.
+5. Connect ethernet, power on, find the IP, `ssh root@<ip>` (use `-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null`, the live host key changes every boot).
+
+**Tested on 2026-11-04** on `nobinobi` (Lenovo, UEFI, Secure Boot off): one-time boot with `efibootmgr --bootnext <USB HDD entry>` + `reboot`, Ventoy auto-picked Arch, cloud-init reported `DataSourceNoCloud [seed=/dev/sda4]` and installed all 5 keys, root SSH worked. `cloud-init status` says `degraded` only because of a harmless growpart warning (`/dev/airootfs` does not exist on a live ISO). `BootNext` is cleared after one use, so `reboot` from the live session (or a power cycle) returns the machine to its normal OS.
+
+Finding the live machine's IP: it gets a **new DHCP lease** (e.g. `192.168.78.138`), not the host's usual address. Do not look it up by MAC with `arp` from the Mac: the Mac does not get ARP entries for that LAN (it is routed, not on the same L2), so the MAC never shows up. Read the RB4011 DHCP lease table (keys repo: `mikrotik/lib/wifi-clients.sh`) or scan for SSH, e.g. `nmap -p22 --open 192.168.78.0/24`.
 
 Only the Arch ISO reads `CIDATA`. The `CIDATA` files are not in this repo; this is their content shape:
 
