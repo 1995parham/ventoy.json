@@ -8,6 +8,9 @@
     },
     {
       "VTOY_DEFAULT_IMAGE": "/iso/linux/arch/archlinux-2026.11.01-x86_64.iso"
+    },
+    {
+      "VTOY_SECONDARY_TIMEOUT": "5"
     }
   ],
   "theme": {
