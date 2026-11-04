@@ -15,6 +15,8 @@ The stick is a 62 GB disk with an **MBR** (not GPT) partition table. All four pr
 
 Partitions 3 and 4 live in the space Ventoy reserves at the end of the disk. Partition 4 was added on 2026-11-03 by shrinking partition 3.
 
+Installed Ventoy version: **1.1.18** (upgraded from 1.0.99 on 2026-11-04). The version is in `VTOYEFI` → `grub/grub.cfg` (`VENTOY_VERSION=`); read it with `sudo mount -o ro /dev/sdX2 /mnt/vtoyefi && grep VENTOY_VERSION /mnt/vtoyefi/grub/grub.cfg`. Check it before blaming an ISO: an old Ventoy is the usual cause when a new distro release fails to boot.
+
 ### Repartitioning pitfalls (learned the hard way)
 
 - `diskutil splitPartition` refuses to split partition 3 on this MBR disk (`-69850: The chosen size is not valid`), at any size. Use `fdisk -r` with a table file instead (`fdisk -d /dev/diskN` prints the current table in the same `start,size,id,flag,...` format).
@@ -23,6 +25,12 @@ Partitions 3 and 4 live in the space Ventoy reserves at the end of the disk. Par
 - Raw devices need sector-aligned reads: use `bs=512`, not `bs=446`.
 - `newfs_exfat` fails on the shrunk partition 3 ("Invalid sector size, cluster size, or number of sectors"); `diskutil eraseVolume ExFAT PARHAM-KEYS diskNs3` works and leaves the MBR boot code alone. `newfs_msdos -F 16 -v CIDATA /dev/rdiskNs4` works for partition 4.
 - Never run `Ventoy2Disk.sh -i` (it wipes the whole disk). Only `-u` (upgrade) is safe.
+
+### Upgrading Ventoy
+
+`Ventoy2Disk.sh` runs on Linux (and Windows), not macOS, so upgrade from a Linux host, e.g. `nobinobi` (`192.168.78.3`), or from the Arch ISO on the stick itself. Verify the tarball against the release's `sha256.txt`, back up the first 1 MiB of the disk and the `VTOYEFI` partition, dump the table with `sfdisk -d`, then run `sudo sh Ventoy2Disk.sh -u /dev/sdX` from inside the extracted folder. `-u` rewrites only the boot code and `VTOYEFI`; the partition table, the ISOs, `PARHAM-KEYS` and `CIDATA` stay unchanged (verified on the 1.0.99 → 1.1.18 upgrade by diffing `sfdisk -d` before and after). The script asks for confirmation twice. Piping the password and the answers together into `sudo -S` does not work (the script exits without upgrading); use `sudo sh -c 'yes y | sh Ventoy2Disk.sh -u /dev/sdX'` instead. Confirm the new `VENTOY_VERSION` afterwards.
+
+`nobinobi` has no GitHub key: to commit from there, use `ssh -A` from the Mac so the push uses the forwarded agent.
 
 ## ISO folder layout
 
@@ -49,6 +57,10 @@ Download to the Mac first, verify against the distro's official SHA256, copy to 
 | Windows 11 | `https://www.microsoft.com/software-download/windows11` (browser only, no direct link) | shown on the download page |
 
 **When the Arch ISO changes, update `VTOY_DEFAULT_IMAGE` in `ventoy.json`**, otherwise the headless auto-boot points to a file that no longer exists.
+
+### SystemRescue under Ventoy
+
+SystemRescue breaks under Ventoy's normal mode every few releases (Ventoy issues #2958, #2966, #2974 for 11.x, #3206 for 12.x). The symptom is `init not found` (printed by Ventoy's initramfs hook, not by SystemRescue) or a black screen. On 2026-11-03 SystemRescue 13.02 showed `init not found` with Ventoy 1.0.99. After upgrading Ventoy to 1.1.18 it boots in Ventoy's normal mode using SystemRescue's own "copy system to RAM" entry; the default (non-copytoram) entry has not been tested on 1.1.18 yet. If a future release fails, first upgrade Ventoy, then try GRUB2 mode (Ctrl+R) or memdisk mode (Ctrl+D) from the Ventoy menu, and make the working mode permanent in `ventoy.json` (memdisk: the `auto_memdisk` plugin with the ISO path).
 
 ## Headless boot (no monitor)
 
