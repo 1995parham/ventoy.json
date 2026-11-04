@@ -28,9 +28,9 @@ Installed Ventoy version: **1.1.18** (upgraded from 1.0.99 on 2026-11-04). The v
 
 ### Upgrading Ventoy
 
-`Ventoy2Disk.sh` runs on Linux (and Windows), not macOS, so upgrade from a Linux host, e.g. `nobinobi` (`192.168.78.3`), or from the Arch ISO on the stick itself. Verify the tarball against the release's `sha256.txt`, back up the first 1 MiB of the disk and the `VTOYEFI` partition, dump the table with `sfdisk -d`, then run `sudo sh Ventoy2Disk.sh -u /dev/sdX` from inside the extracted folder. `-u` rewrites only the boot code and `VTOYEFI`; the partition table, the ISOs, `PARHAM-KEYS` and `CIDATA` stay unchanged (verified on the 1.0.99 → 1.1.18 upgrade by diffing `sfdisk -d` before and after). The script asks for confirmation twice. Piping the password and the answers together into `sudo -S` does not work (the script exits without upgrading); use `sudo sh -c 'yes y | sh Ventoy2Disk.sh -u /dev/sdX'` instead. Confirm the new `VENTOY_VERSION` afterwards.
+`Ventoy2Disk.sh` runs on Linux (and Windows), not macOS, so upgrade from a Linux host or from the Arch ISO on the stick itself. Verify the tarball against the release's `sha256.txt`, back up the first 1 MiB of the disk and the `VTOYEFI` partition, dump the table with `sfdisk -d`, then run `sudo sh Ventoy2Disk.sh -u /dev/sdX` from inside the extracted folder. `-u` rewrites only the boot code and `VTOYEFI`; the partition table, the ISOs, `PARHAM-KEYS` and `CIDATA` stay unchanged (verified on the 1.0.99 → 1.1.18 upgrade by diffing `sfdisk -d` before and after). The script asks for confirmation twice. Piping the password and the answers together into `sudo -S` does not work (the script exits without upgrading); use `sudo sh -c 'yes y | sh Ventoy2Disk.sh -u /dev/sdX'` instead. Confirm the new `VENTOY_VERSION` afterwards.
 
-`nobinobi` has no GitHub key, and its sshd sets `AllowAgentForwarding no`, so `ssh -A` does not help. Commit on the stick there, then push from the Mac: `git fetch parham@192.168.78.3:/mnt/ventoy/ventoy main` into a clone and `git push origin FETCH_HEAD:main`.
+If that Linux host has no GitHub key (and `ssh -A` is blocked by `AllowAgentForwarding no`), commit on the stick there, then push from the Mac: `git fetch <user>@<host>:/mnt/ventoy/ventoy main` into a clone and `git push origin FETCH_HEAD:main`.
 
 ## ISO folder layout
 
@@ -72,9 +72,9 @@ The stick can boot a machine that has no display and make it reachable over SSH:
 4. `user-data` installs the SSH public keys from `https://github.com/1995parham.keys` as root's `authorized_keys`. Regenerate it when those keys change.
 5. Connect ethernet, power on, find the IP, `ssh root@<ip>` (use `-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null`, the live host key changes every boot).
 
-**Tested on 2026-11-04** on `nobinobi` (Lenovo, UEFI, Secure Boot off): one-time boot with `efibootmgr --bootnext <USB HDD entry>` + `reboot`, Ventoy auto-picked Arch, cloud-init reported `DataSourceNoCloud [seed=/dev/sda4]` and installed all 5 keys, root SSH worked. `cloud-init status` says `degraded` only because of a harmless growpart warning (`/dev/airootfs` does not exist on a live ISO). `BootNext` is cleared after one use, so `reboot` from the live session (or a power cycle) returns the machine to its normal OS.
+**Tested on 2026-11-04** on a Lenovo desktop (UEFI, Secure Boot off): one-time boot with `efibootmgr --bootnext <USB HDD entry>` + `reboot`, Ventoy auto-picked Arch, cloud-init reported `DataSourceNoCloud [seed=/dev/sda4]` and installed all 5 keys, root SSH worked. `cloud-init status` says `degraded` only because of a harmless growpart warning (`/dev/airootfs` does not exist on a live ISO). `BootNext` is cleared after one use, so `reboot` from the live session (or a power cycle) returns the machine to its normal OS.
 
-Finding the live machine's IP: it gets a **new DHCP lease** (e.g. `192.168.78.138`), not the host's usual address. Do not look it up by MAC with `arp` from the Mac: the Mac does not get ARP entries for that LAN (it is routed, not on the same L2), so the MAC never shows up. Read the RB4011 DHCP lease table (keys repo: `mikrotik/lib/wifi-clients.sh`) or scan for SSH, e.g. `nmap -p22 --open 192.168.78.0/24`.
+Finding the live machine's IP: it gets a **new DHCP lease**, not the host's usual address. Do not look it up by MAC with `arp` from the Mac: the Mac does not get ARP entries for that LAN (it is routed, not on the same L2), so the MAC never shows up. Read the RB4011 DHCP lease table (keys repo: `mikrotik/lib/wifi-clients.sh`) or scan for SSH, e.g. `nmap -p22 --open 192.168.78.0/24`.
 
 Only the Arch ISO reads `CIDATA`. The `CIDATA` files are not in this repo; this is their content shape:
 
